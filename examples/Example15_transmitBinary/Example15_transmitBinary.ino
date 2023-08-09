@@ -48,18 +48,8 @@ SWARM_M138 mySwarm;
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 // Callback: printMessageSent will be called when a new unsolicited $TD SENT message arrives.
-void printMessageSent(const int16_t *rssi_sat, const int16_t *snr, const int16_t *fdev, const uint64_t *msg_id)
-{
-  Serial.print(F("New $TD SENT message received:"));
-  Serial.print(F("  RSSI = "));
-  Serial.print(*rssi_sat);
-  Serial.print(F("  SNR = "));
-  Serial.print(*snr);
-  Serial.print(F("  FDEV = "));
-  Serial.print(*fdev);
-  Serial.print(F("  Message ID: "));
-  serialPrintUint64_t(*msg_id);
-  Serial.println();
+void printMessageSent(const int16_t rssi_sat, const int16_t snr, const int16_t fdev, const uint64_t msg_id) {
+  Serial.printf(F("New $TD SENT message received. RSSI: %i, SNR: %i, FDEV: %i, Message ID: %llu.\n"), rssi_sat, snr, fdev, msg_id);
 }
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
